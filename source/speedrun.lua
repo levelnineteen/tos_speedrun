@@ -10,7 +10,7 @@ function SPEEDRUN_ON_INIT(addon, frame)
 	local acutil = require("acutil");
 
 	if not g.loaded then
-		CHAT_SYSTEM(frame:GetName() .. " v1.2.1 loaded!");
+		CHAT_SYSTEM(frame:GetName() .. " v1.2.2 loaded!");
 		g.BeforeTime = os.clock();
 		g.BeforeMoney = _G.GET_TOTAL_MONEY();
 		g.BeforeExp = _G.session.GetEXP();
@@ -112,6 +112,13 @@ end
 function ADDONS.LV19.SPEEDRUN.OUTPUT(name,map,min,sec,silver,bexp,jexp)
 	local g = _G['ADDONS'][devuser][addonname];
 	local f = io.open(g.FilePath, "a");
+	if name == nil then name = "N/A" end;
+	if map == nil then map = "N/A" end;
+	if min == nil then min = "N/A" end;
+	if sec == nil then sec = "N/A" end;
+	if silver == nil then silver = "N/A" end;
+	if bexp == nil then bexp = "N/A" end;
+	if jexp == nil then jexp = "N/A" end;
 	f:write(_G.GetLocalTimeString() .. "," .. name .. "," .. map .. "," .. min .. ":" .. sec .. "," .. silver .. "," .. bexp .. "," .. jexp .. "\n");
 	f:close();
 end
