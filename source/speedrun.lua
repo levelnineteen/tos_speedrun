@@ -1,8 +1,6 @@
 local devuser = 'LV19';
 local addonname = 'SPEEDRUN';
 
-CHAT_SYSTEM('test');
-
 _G['ADDONS'] = _G['ADDONS'] or {};
 _G['ADDONS'][devuser] = _G['ADDONS'][devuser] or {};
 _G['ADDONS'][devuser][addonname] = _G['ADDONS'][devuser][addonname] or {};
