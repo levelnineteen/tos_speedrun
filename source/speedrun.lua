@@ -10,7 +10,7 @@ function SPEEDRUN_ON_INIT(addon, frame)
 	local acutil = require("acutil");
 
 	if not g.loaded then
-		CHAT_SYSTEM(frame:GetName() .. " loaded!");
+		CHAT_SYSTEM(frame:GetName() .. " v1.1.5 loaded!");
 		g.BeforeTime = os.clock();
 		g.BeforeMoney = _G.GET_TOTAL_MONEY();
 		g.BeforeExp = _G.session.GetEXP();
@@ -61,7 +61,7 @@ function SPEEDRUN_UPDATE(frame, msg, argStr, argNum)
 		end
 		local e1 = g.CurrentExp - g.BeforeExp;
 		local e2 = g.CurrentJobExp - g.BeforeJobExp;
-		CHAT_SYSTEM("ClearTime:" .. t5 .. "min" .. t4 .. "sec Silver:" .. g3 .. g2 .. " Bexp:+" .. e1 .. " Jexp:+" .. e2);
+		CHAT_SYSTEM("ClearTime:" .. t5 .. "min" .. t4 .. "sec Silver:" .. g3 .. GetCommaedText(g2) .. " Bexp:+" .. GetCommaedText(e1) .. " Jexp:+" .. GetCommaedText(e2));
 		g.BeforeTime = t2;
 		g.BeforeMoney = g1;
 		g.BeforeMapID = t1;
@@ -88,11 +88,11 @@ function SPEEDRUN_COMMAND()
 	end
 	local e1 = g.CurrentExp - g.BeforeExp;
 	local e2 = g.CurrentJobExp - g.BeforeJobExp;
-	CHAT_SYSTEM("ClearTime:" .. t5 .. "min" .. t4 .. "sec Silver:" .. g3 .. g2 .. " Bexp:+" .. e1 .. " Jexp:+" .. e2);
+	CHAT_SYSTEM("ClearTime:" .. t5 .. "min" .. t4 .. "sec Silver:" .. g3 .. GetCommaedText(g2) .. " Bexp:+" .. GetCommaedText(e1) .. " Jexp:+" .. GetCommaedText(e2));
 	g.BeforeTime = t2;
 	g.BeforeMoney = g1;
 	g.BeforeExp = g.CurrentExp;
 	g.BeforeJobExp = g.CurrentJobExp;
-	--バラックに戻る方法が最新のアップデートで変わってこれで戻ると不具合があるため外す
---_G.app.GameToBarrack();
+	--バラックに戻る
+	_G.RUN_GAMEEXIT_TIMER("Barrack");
 end
