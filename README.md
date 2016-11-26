@@ -7,6 +7,8 @@ TreeofSaviorJP\data の中にipfファイルを設置する。
 コマンドを使用した場合、バラックへ戻る。  
 TreeofSaviorJP\addons\speedrun\record.csv フォルダと空のファイルを作って設置すると、記録が書き込まれる。
 ## update history
+### v1.2.5
+ジョブ経験値の追従に失敗する時があったのを修正  
 ### v1.2.4
 レベルアップ後に現在経験が0に戻るのが分かったので、その対応  
 ### v1.2.2

@@ -10,7 +10,7 @@ function SPEEDRUN_ON_INIT(addon, frame)
 	local acutil = require("acutil");
 
 	if not g.loaded then
-		CHAT_SYSTEM(frame:GetName() .. " v1.2.4 loaded!");
+		CHAT_SYSTEM(frame:GetName() .. " v1.2.5 loaded!");
 		g.BeforeTime = os.clock();
 		g.BeforeMoney = _G.GET_TOTAL_MONEY();
 		g.BeforeExp = _G.session.GetEXP();
@@ -29,6 +29,7 @@ function SPEEDRUN_ON_INIT(addon, frame)
 	addon:RegisterMsg("FPS_UPDATE", "SPEEDRUN_UPDATE");
 	addon:RegisterMsg('EXP_UPDATE', 'SPEEDRUN_EXP_UPDATE');
 	addon:RegisterMsg('JOB_EXP_UPDATE', 'SPEEDRUN_JOB_EXP_UPDATE');
+	addon:RegisterMsg('JOB_EXP_ADD', 'SPEEDRUN_JOB_EXP_UPDATE');
 	acutil.slashCommand("/speedrun", SPEEDRUN_COMMAND);
 end
 
