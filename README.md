@@ -7,6 +7,8 @@ TreeofSaviorJP\data の中にipfファイルを設置する。
 コマンドを使用した場合、バラックへ戻る。  
 TreeofSaviorJP\addons\speedrun\record.csv フォルダと空のファイルを作って設置すると、記録が書き込まれる。
 ## update history
+### v1.2.1
+CSVの先頭に日時データを追加  
 ### v1.2.0
 キャラクター変更時に差分が表示されていたのを修正  
 何も獲得していないときに表示されないように修正  
