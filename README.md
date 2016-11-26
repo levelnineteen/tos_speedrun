@@ -9,6 +9,7 @@ TreeofSaviorJP\addons\speedrun\record.csv フォルダと空のファイルを�
 ## update history
 ### v1.2.0
 キャラクター変更時に差分が表示されていたのを修正  
+何も獲得していないときに表示されないように修正  
 CSVファイルへの記録機能を追加
 ### v1.1.5
 コマンドでバラックに戻る機能を復活。  
