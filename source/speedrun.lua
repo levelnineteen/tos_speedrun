@@ -10,7 +10,7 @@ function SPEEDRUN_ON_INIT(addon, frame)
 	local acutil = require("acutil");
 
 	if not g.loaded then
-		CHAT_SYSTEM(frame:GetName() .. " v1.2.6 loaded!");
+		CHAT_SYSTEM(frame:GetName() .. " v1.3.0 loaded!");
 		g.BeforeTime = os.clock();
 		g.BeforeMoney = _G.GET_TOTAL_MONEY();
 		g.BeforeExp = _G.session.GetEXP();
@@ -19,7 +19,7 @@ function SPEEDRUN_ON_INIT(addon, frame)
 		g.LevelupExp = g.BeforeMaxExp - g.CurrentExp;
 		g.TotalExp = 0;
 		g.TotalJobExp = 0;
-		g.BeforeMapName = _G.session.GetMapName();
+		g.BeforeMapName = g.GetMapDisplayName();
 		g.BeforeCharName = _G.GetMyName();
 		g.FilePath = path.GetDataPath() .. "../addons/speedrun/record.csv";
 		g.isEnable = true;
@@ -96,7 +96,7 @@ function SPEEDRUN_UPDATE(frame, msg, argStr, argNum)
 		g.BeforeTime = t2;
 		g.BeforeMoney = g1;
 		g.BeforeMapID = t1;
-		g.BeforeMapName = _G.session.GetMapName();
+		g.BeforeMapName = g.GetMapDisplayName();
 		g.BeforeExp = g.CurrentExp;
 		g.BeforeJobExp = g.CurrentJobExp;
 		g.TotalExp = 0;
@@ -123,7 +123,7 @@ function SPEEDRUN_COMMAND()
 	local e1 = g.CurrentExp + g.TotalExp - g.BeforeExp;
 	local e2 = g.CurrentJobExp + g.TotalJobExp - g.BeforeJobExp;
 	CHAT_SYSTEM("ClearTime:" .. t5 .. "min" .. t4 .. "sec Silver:" .. g3 .. GetCommaedText(g2) .. " Bexp:+" .. GetCommaedText(e1) .. " Jexp:+" .. GetCommaedText(e2));
-	g.OUTPUT(g.BeforeCharName, _G.session.GetMapName() , t5 ,t4,g2,e1,e2);
+	g.OUTPUT(g.BeforeCharName, g.GetMapDisplayName() , t5 ,t4,g2,e1,e2);
 	g.BeforeTime = t2;
 	g.BeforeMoney = g1;
 	g.BeforeExp = g.CurrentExp;
@@ -146,4 +146,12 @@ function ADDONS.LV19.SPEEDRUN.OUTPUT(name,map,min,sec,silver,bexp,jexp)
 	if jexp == nil then jexp = "N/A" end;
 	f:write(_G.GetLocalTimeString() .. "," .. name .. "," .. map .. "," .. min .. ":" .. sec .. "," .. silver .. "," .. bexp .. "," .. jexp .. "\n");
 	f:close();
+end
+
+function ADDONS.LV19.SPEEDRUN.GetMapDisplayName()
+	local g = _G['ADDONS'][devuser][addonname];
+	local mapClassName = _G.session.GetMapName();
+	local mapprop = _G.geMapTable.GetMapProp(mapClassName);
+	local mapName = _G.dictionary.ReplaceDicIDInCompStr(mapprop:GetName());
+	return mapName;
 end

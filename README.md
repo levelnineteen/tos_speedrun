@@ -7,6 +7,8 @@ TreeofSaviorJP\data の中にipfファイルを設置する。
 コマンドを使用した場合、バラックへ戻る。  
 TreeofSaviorJP\addons\speedrun\record.csv フォルダと空のファイルを作って設置すると、記録が書き込まれる。
 ## update history
+### v1.3.0
+CSVに保存するマップ名を日本語表記名に変更  
 ### v1.2.6
 キャラクター変更時に前のキャラクターのレベルアップ分の経験値を計算に入れていたのを修正  
 ### v1.2.5
