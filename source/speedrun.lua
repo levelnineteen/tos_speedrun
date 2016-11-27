@@ -10,7 +10,7 @@ function SPEEDRUN_ON_INIT(addon, frame)
 	local acutil = require("acutil");
 
 	if not g.loaded then
-		CHAT_SYSTEM(frame:GetName() .. " v1.2.5 loaded!");
+		CHAT_SYSTEM(frame:GetName() .. " v1.2.6 loaded!");
 		g.BeforeTime = os.clock();
 		g.BeforeMoney = _G.GET_TOTAL_MONEY();
 		g.BeforeExp = _G.session.GetEXP();
@@ -88,7 +88,10 @@ function SPEEDRUN_UPDATE(frame, msg, argStr, argNum)
 				g.OUTPUT(g.BeforeCharName, g.BeforeMapName , t5 ,t4,g2,e1,e2);
 			end
 		else
+			--キャラが変わったのでレベルアップ差分の保管を消す
 			g.BeforeCharName = _G.GetMyName();
+			g.TotalJobExp = 0;
+			g.TotalExp = 0;
 		end
 		g.BeforeTime = t2;
 		g.BeforeMoney = g1;
