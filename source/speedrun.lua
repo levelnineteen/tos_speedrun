@@ -10,7 +10,7 @@ function SPEEDRUN_ON_INIT(addon, frame)
 	local acutil = require("acutil");
 
 	if not g.loaded then
-		CHAT_SYSTEM(frame:GetName() .. " v1.3.0 loaded!");
+		CHAT_SYSTEM(frame:GetName() .. " v1.3.1 loaded!");
 		g.BeforeTime = os.clock();
 		g.BeforeMoney = _G.GET_TOTAL_MONEY();
 		g.BeforeExp = _G.session.GetEXP();
@@ -77,7 +77,9 @@ function SPEEDRUN_UPDATE(frame, msg, argStr, argNum)
 		if g2 >= 0 then
 			g3 = "+";
 		else
-			g3 = "";
+			--マイナスはそのまま表示できない
+			g3 = "-";
+			g2= math.abs(g2);
 		end
 		local e1 = g.CurrentExp + g.TotalExp - g.BeforeExp;
 		local e2 = g.CurrentJobExp + g.TotalJobExp - g.BeforeJobExp;
@@ -85,7 +87,7 @@ function SPEEDRUN_UPDATE(frame, msg, argStr, argNum)
 		if g.BeforeCharName == _G.GetMyName() then
 			if g2+e1+e2 ~= 0 then
 				CHAT_SYSTEM("ClearTime:" .. t5 .. "min" .. t4 .. "sec Silver:" .. g3 .. GetCommaedText(g2) .. " Bexp:+" .. GetCommaedText(e1) .. " Jexp:+" .. GetCommaedText(e2));
-				g.OUTPUT(g.BeforeCharName, g.BeforeMapName , t5 ,t4,g2,e1,e2);
+				g.OUTPUT(g.BeforeCharName, g.BeforeMapName , t5 ,t4,g3,g2,e1,e2);
 			end
 		else
 			--キャラが変わったのでレベルアップ差分の保管を消す
@@ -118,12 +120,14 @@ function SPEEDRUN_COMMAND()
 	if g2 >= 0 then
 		g3 = "+";
 	else
-		g3 = "";
+		--マイナスはそのまま表示できない
+		g3 = "-";
+		g2= math.abs(g2);
 	end
 	local e1 = g.CurrentExp + g.TotalExp - g.BeforeExp;
 	local e2 = g.CurrentJobExp + g.TotalJobExp - g.BeforeJobExp;
 	CHAT_SYSTEM("ClearTime:" .. t5 .. "min" .. t4 .. "sec Silver:" .. g3 .. GetCommaedText(g2) .. " Bexp:+" .. GetCommaedText(e1) .. " Jexp:+" .. GetCommaedText(e2));
-	g.OUTPUT(g.BeforeCharName, g.GetMapDisplayName() , t5 ,t4,g2,e1,e2);
+	g.OUTPUT(g.BeforeCharName, g.GetMapDisplayName() , t5 ,t4,g3,g2,e1,e2);
 	g.BeforeTime = t2;
 	g.BeforeMoney = g1;
 	g.BeforeExp = g.CurrentExp;
@@ -134,17 +138,20 @@ function SPEEDRUN_COMMAND()
 	_G.RUN_GAMEEXIT_TIMER("Barrack");
 end
 
-function ADDONS.LV19.SPEEDRUN.OUTPUT(name,map,min,sec,silver,bexp,jexp)
+function ADDONS.LV19.SPEEDRUN.OUTPUT(name,map,min,sec,sign,silver,bexp,jexp)
 	local g = _G['ADDONS'][devuser][addonname];
 	local f = io.open(g.FilePath, "a");
-	if name == nil then name = "N/A" end;
-	if map == nil then map = "N/A" end;
-	if min == nil then min = "N/A" end;
-	if sec == nil then sec = "N/A" end;
-	if silver == nil then silver = "N/A" end;
-	if bexp == nil then bexp = "N/A" end;
-	if jexp == nil then jexp = "N/A" end;
-	f:write(_G.GetLocalTimeString() .. "," .. name .. "," .. map .. "," .. min .. ":" .. sec .. "," .. silver .. "," .. bexp .. "," .. jexp .. "\n");
+	--ディレクトリがなければ終わる。
+	if f == nil then return; end
+	if name == nil then name = "N/A"; end;
+	if map == nil then map = "N/A"; end;
+	if min == nil then min = "N/A"; end;
+	if sec == nil then sec = "N/A"; end;
+	if sign == "+" then sign = ""; end;
+	if silver == nil then silver = "N/A"; end;
+	if bexp == nil then bexp = "N/A"; end;
+	if jexp == nil then jexp = "N/A"; end;
+	f:write(_G.GetLocalTimeString() .. "," .. name .. "," .. map .. "," .. min .. ":" .. sec .. "," .. sign .. silver .. "," .. bexp .. "," .. jexp .. "\n");
 	f:close();
 end
 

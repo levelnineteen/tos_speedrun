@@ -5,8 +5,12 @@
 TreeofSaviorJP\data の中にipfファイルを設置する。  
 新しいマップに入るか、/speedrun コマンドで、記録をシステムメッセージで表示。  
 コマンドを使用した場合、バラックへ戻る。  
-TreeofSaviorJP\addons\speedrun\record.csv フォルダと空のファイルを作って設置すると、記録が書き込まれる。
+TreeofSaviorJP\addons\speedrun\record.csv フォルダと空のファイルを作って設置すると、記録が書き込まれる。  
+※ファイルはUTF-8でエンコードされている必要があります。
 ## update history
+### v1.3.1
+シルバー減少時に表示されなかったのを修正  
+TreeofSaviorJP\addons\speedrun ディレクトリがない場合にループしていたのを修正  
 ### v1.3.0
 CSVに保存するマップ名を日本語表記名に変更  
 ### v1.2.6
