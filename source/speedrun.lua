@@ -10,7 +10,7 @@ function SPEEDRUN_ON_INIT(addon, frame)
 	local acutil = require("acutil");
 
 	if not g.loaded then
-		CHAT_SYSTEM(frame:GetName() .. " v1.3.1 loaded!");
+		CHAT_SYSTEM(frame:GetName() .. " v1.4.0 loaded!");
 		g.BeforeTime = os.clock();
 		g.BeforeMoney = _G.GET_TOTAL_MONEY();
 		g.BeforeExp = _G.session.GetEXP();
@@ -49,6 +49,7 @@ end
 function SPEEDRUN_JOB_EXP_UPDATE(frame, msg, str, exp, tableinfo)
 	local g = _G['ADDONS'][devuser][addonname];
 	g.CurrentJobExp = exp;
+	g.CurrentJobLevel = tableinfo.level;
 	if g.FirstCheck == false then
 		g.BeforeJobExp = exp;
 		g.BeforeMaxJobExp = tableinfo.endExp;
@@ -65,8 +66,8 @@ end
 function SPEEDRUN_UPDATE(frame, msg, argStr, argNum)
 	local g = _G['ADDONS'][devuser][addonname];
 	local t1 = _G.session.GetMapID();
-	if t1 ~= g.BeforeMapID then
-		--マップIDが現在のものと違う場合、時間と金と経験値を更新。有効でないときは更新だけ。
+	if t1 ~= g.BeforeMapID or g.BeforeCharName ~= _G.GetMyName() then
+		--マップIDが現在のものと違う場合、またはキャラ名が違う場合、時間と金と経験値を更新。有効でないときは更新だけ。
 		local t2 = os.clock();
 		local g1 = _G.GET_TOTAL_MONEY();
 		local t3 = t2 - g.BeforeTime;
@@ -85,15 +86,13 @@ function SPEEDRUN_UPDATE(frame, msg, argStr, argNum)
 		local e2 = g.CurrentJobExp + g.TotalJobExp - g.BeforeJobExp;
 		--前回キャラ名と今回キャラ名が違う場合、何も獲得していない場合、表示しない。
 		if g.BeforeCharName == _G.GetMyName() then
-			if g2+e1+e2 ~= 0 then
+			if g2+e1+e2 ~= 0 and g.isEnable then
 				CHAT_SYSTEM("ClearTime:" .. t5 .. "min" .. t4 .. "sec Silver:" .. g3 .. GetCommaedText(g2) .. " Bexp:+" .. GetCommaedText(e1) .. " Jexp:+" .. GetCommaedText(e2));
 				g.OUTPUT(g.BeforeCharName, g.BeforeMapName , t5 ,t4,g3,g2,e1,e2);
 			end
 		else
-			--キャラが変わったのでレベルアップ差分の保管を消す
+			--キャラが変わったのでキャラ名を更新
 			g.BeforeCharName = _G.GetMyName();
-			g.TotalJobExp = 0;
-			g.TotalExp = 0;
 		end
 		g.BeforeTime = t2;
 		g.BeforeMoney = g1;
@@ -106,9 +105,28 @@ function SPEEDRUN_UPDATE(frame, msg, argStr, argNum)
 	end
 end
 
-function SPEEDRUN_COMMAND()
+function SPEEDRUN_COMMAND(words)
 	local g = _G['ADDONS'][devuser][addonname];
-	local acutil = require('acutil');
+	local cmd = table.remove(words,1);
+	local temp = _G.GetMyPCObject();
+	if not cmd then
+		g.MANUAL();
+	elseif cmd == "out" then
+		--バラックに戻る
+		g.MANUAL();
+		_G.RUN_GAMEEXIT_TIMER("Barrack");
+	elseif cmd == "on" then
+		g.isEnable = true;
+		CHAT_SYSTEM("speedrun enabled");
+	elseif cmd == "off" then
+		g.isEnable = false;
+		CHAT_SYSTEM("speedrun disabled");
+	elseif cmd == "help" then
+		CHAT_SYSTEM("/speedrun  ..record{nl}/speedrun on ..enable(default){nl}/speedrun off ..disable{nl}/speedrun out ..record & go to barrack");
+	end
+end
+
+function ADDONS.LV19.SPEEDRUN.MANUAL()
 	local g = _G['ADDONS'][devuser][addonname];
 	local t2 = os.clock();
 	local g1 = _G.GET_TOTAL_MONEY();
@@ -134,8 +152,6 @@ function SPEEDRUN_COMMAND()
 	g.BeforeJobExp = g.CurrentJobExp;
 	g.TotalExp = 0;
 	g.TotalJobExp = 0;
-	--バラックに戻る
-	_G.RUN_GAMEEXIT_TIMER("Barrack");
 end
 
 function ADDONS.LV19.SPEEDRUN.OUTPUT(name,map,min,sec,sign,silver,bexp,jexp)
@@ -151,7 +167,9 @@ function ADDONS.LV19.SPEEDRUN.OUTPUT(name,map,min,sec,sign,silver,bexp,jexp)
 	if silver == nil then silver = "N/A"; end;
 	if bexp == nil then bexp = "N/A"; end;
 	if jexp == nil then jexp = "N/A"; end;
-	f:write(_G.GetLocalTimeString() .. "," .. name .. "," .. map .. "," .. min .. ":" .. sec .. "," .. sign .. silver .. "," .. bexp .. "," .. jexp .. "\n");
+	local pcobj = _G.GetMyPCObject();
+	local rank = _G.session.GetPcTotalJobGrade();
+	f:write(_G.GetLocalTimeString() .. "," .. name .. "," .. map .. "," .. min .. ":" .. sec .. "," .. sign .. silver .. "," .. bexp .. "," .. jexp .. "," .. pcobj.Lv .. "," .. rank .. "," .. g.CurrentJobLevel ..  "\n");
 	f:close();
 end
 
