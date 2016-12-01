@@ -8,10 +8,10 @@ TreeofSaviorJP\addons\speedrun\record.csv フォルダと空のファイルを�
 ※ファイルはUTF-8でエンコードされている必要があります。  
   
 コマンド  
-/speedrun      記録を表示＆書き込み
-/speedrun on   機能を有効にする（デフォルト）
-/speedrun off  機能を無効にする
-/speedrun out  記録を表示＆書き込みし、バラックへ戻る
+/speedrun      記録を表示＆書き込み  
+/speedrun on   機能を有効にする（デフォルト）  
+/speedrun off  機能を無効にする  
+/speedrun out  記録を表示＆書き込みし、バラックへ戻る  
 ## update history
 ### v1.4.0
 コマンド引数に対応  
