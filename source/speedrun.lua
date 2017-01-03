@@ -10,7 +10,7 @@ function SPEEDRUN_ON_INIT(addon, frame)
 	local acutil = require("acutil");
 
 	if not g.loaded then
-		CHAT_SYSTEM(frame:GetName() .. " v1.4.1 loaded!");
+		CHAT_SYSTEM(frame:GetName() .. " v1.4.0 loaded!");
 		g.BeforeTime = os.clock();
 		g.BeforeMoney = _G.GET_TOTAL_MONEY();
 		g.BeforeExp = _G.session.GetEXP();
@@ -111,9 +111,6 @@ function SPEEDRUN_COMMAND(words)
 	local temp = _G.GetMyPCObject();
 	if not cmd then
 		g.MANUAL();
-	elseif cmd == "exit" then
-		g.MANUAL();
-		_G.control.RequesDungeonLeave();
 	elseif cmd == "out" then
 		--ƒoƒ‰ƒbƒN‚É–ß‚é
 		g.MANUAL();
