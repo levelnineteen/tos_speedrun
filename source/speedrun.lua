@@ -10,7 +10,7 @@ function SPEEDRUN_ON_INIT(addon, frame)
 	local acutil = require("acutil");
 
 	if not g.loaded then
-		CHAT_SYSTEM(frame:GetName() .. " v1.4.0 loaded!");
+		CHAT_SYSTEM(frame:GetName() .. " v1.4.1 loaded!");
 		g.BeforeTime = os.clock();
 		g.BeforeMoney = _G.GET_TOTAL_MONEY();
 		g.BeforeExp = _G.session.GetEXP();
@@ -111,6 +111,9 @@ function SPEEDRUN_COMMAND(words)
 	local temp = _G.GetMyPCObject();
 	if not cmd then
 		g.MANUAL();
+	elseif cmd == "exit" then
+		g.MANUAL();
+		_G.control.RequesDungeonLeave();
 	elseif cmd == "out" then
 		--ƒoƒ‰ƒbƒN‚É–ß‚é
 		g.MANUAL();
@@ -122,7 +125,7 @@ function SPEEDRUN_COMMAND(words)
 		g.isEnable = false;
 		CHAT_SYSTEM("speedrun disabled");
 	elseif cmd == "help" then
-		CHAT_SYSTEM("/speedrun  ..record{nl}/speedrun on ..enable(default){nl}/speedrun off ..disable{nl}/speedrun out ..record & go to barrack");
+		CHAT_SYSTEM("/speedrun  ..record{nl}/speedrun on ..enable(default){nl}/speedrun off ..disable{nl}/speedrun out ..record & go to barrack{nl}/speedrun exit ..record & dungeon exit");
 	end
 end
 

@@ -1,0 +1,15 @@
+﻿[
+    {
+        "name" : "tos_speedrun",
+        "file" : "tos_speedrun",
+        "extension" : "ipf",
+        "fileVersion" : "v1.4.0",
+        "releaseTag" : "tos_speedrun",
+        "unicode" : "⛄",
+        "description" : "マップ切り替え時に前回のマップの滞在時間、シルバー・経験値の増減をシステムメッセージで表示する。TreeofSaviorJP\addons\speedrun\record.csv にフォルダと空のファイル（UTF-8でエンコードされていること）を設置すれば記録が書き込まれる。",
+        "tags" : [
+            "speedrun",
+            "record"
+        ]
+    }
+]
