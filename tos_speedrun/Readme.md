@@ -3,7 +3,7 @@
 ##使い方
 TreeofSaviorJP\data の中にipfファイルを設置する。  
 新しいマップに入るか、コマンドで記録をシステムメッセージで表示。  
-TreeofSaviorJP\addons\speedrun\record.csv フォルダと空のファイルを作って設置すると、記録が書き込まれる。  
+TreeofSaviorJP\\addons\\speedrun\\record.csv フォルダと空のファイルを作って設置すると、記録が書き込まれる。  
 ※ファイルはUTF-8でエンコードされている必要があります。  
   
 コマンド  
