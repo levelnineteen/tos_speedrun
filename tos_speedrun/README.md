@@ -1,13 +1,13 @@
-ƒ}ƒbƒvˆÚ“®‚à‚µ‚­‚ÍƒRƒ}ƒ“ƒhŽg—pŽž‚ÉA‹æŠÔ‚É‚©‚©‚Á‚½ŽžŠÔAƒVƒ‹ƒo[‚Ì‘Œ¸AŠl“¾ŒoŒ±’l‚ð•\Ž¦‚·‚éBCSVƒtƒ@ƒCƒ‹‚ð—pˆÓ‚·‚ê‚ÎA‹L˜^‚ð‘‚«ž‚ÞB
+ï»¿ãƒžãƒƒãƒ—ç§»å‹•ã‚‚ã—ãã¯ã‚³ãƒžãƒ³ãƒ‰ä½¿ç”¨æ™‚ã«ã€åŒºé–“ã«ã‹ã‹ã£ãŸæ™‚é–“ã€ã‚·ãƒ«ãƒãƒ¼ã®å¢—æ¸›ã€ç²å¾—çµŒé¨“å€¤ã‚’è¡¨ç¤ºã™ã‚‹ã€‚CSVãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç”¨æ„ã™ã‚Œã°ã€è¨˜éŒ²ã‚’æ›¸ãè¾¼ã‚€ã€‚
 
-##Žg‚¢•û
-TreeofSaviorJP\data ‚Ì’†‚Éipfƒtƒ@ƒCƒ‹‚ðÝ’u‚·‚éB  
-V‚µ‚¢ƒ}ƒbƒv‚É“ü‚é‚©AƒRƒ}ƒ“ƒh‚Å‹L˜^‚ðƒVƒXƒeƒ€ƒƒbƒZ[ƒW‚Å•\Ž¦B  
-TreeofSaviorJP\\addons\\speedrun\\record.csv ƒtƒHƒ‹ƒ_‚Æ‹ó‚Ìƒtƒ@ƒCƒ‹‚ðì‚Á‚ÄÝ’u‚·‚é‚ÆA‹L˜^‚ª‘‚«ž‚Ü‚ê‚éB  
-¦ƒtƒ@ƒCƒ‹‚ÍUTF-8‚ÅƒGƒ“ƒR[ƒh‚³‚ê‚Ä‚¢‚é•K—v‚ª‚ ‚è‚Ü‚·B  
+##ä½¿ã„æ–¹
+TreeofSaviorJP\data ã®ä¸­ã«ipfãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¨­ç½®ã™ã‚‹ã€‚  
+æ–°ã—ã„ãƒžãƒƒãƒ—ã«å…¥ã‚‹ã‹ã€ã‚³ãƒžãƒ³ãƒ‰ã§è¨˜éŒ²ã‚’ã‚·ã‚¹ãƒ†ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã§è¡¨ç¤ºã€‚  
+TreeofSaviorJP\\addons\\speedrun\\record.csv ãƒ•ã‚©ãƒ«ãƒ€ã¨ç©ºã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œã£ã¦è¨­ç½®ã™ã‚‹ã¨ã€è¨˜éŒ²ãŒæ›¸ãè¾¼ã¾ã‚Œã‚‹ã€‚  
+â€»ãƒ•ã‚¡ã‚¤ãƒ«ã¯UTF-8ã§ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã•ã‚Œã¦ã„ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚  
   
-ƒRƒ}ƒ“ƒh  
-/speedrun      ‹L˜^‚ð•\Ž¦•‘‚«ž‚Ý  
-/speedrun on   ‹@”\‚ð—LŒø‚É‚·‚éiƒfƒtƒHƒ‹ƒgj  
-/speedrun off  ‹@”\‚ð–³Œø‚É‚·‚é  
-/speedrun out  ‹L˜^‚ð•\Ž¦•‘‚«ž‚Ý‚µAƒoƒ‰ƒbƒN‚Ö–ß‚é  
+ã‚³ãƒžãƒ³ãƒ‰  
+/speedrun      è¨˜éŒ²ã‚’è¡¨ç¤ºï¼†æ›¸ãè¾¼ã¿  
+/speedrun on   æ©Ÿèƒ½ã‚’æœ‰åŠ¹ã«ã™ã‚‹ï¼ˆãƒ‡ãƒ•ã‚©ãƒ«ãƒˆï¼‰  
+/speedrun off  æ©Ÿèƒ½ã‚’ç„¡åŠ¹ã«ã™ã‚‹  
+/speedrun out  è¨˜éŒ²ã‚’è¡¨ç¤ºï¼†æ›¸ãè¾¼ã¿ã—ã€ãƒãƒ©ãƒƒã‚¯ã¸æˆ»ã‚‹  
